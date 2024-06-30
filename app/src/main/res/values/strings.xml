@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">Simple Volume Control</string>
     <string name="open_volume_control">Open Volume Control</string>
-    <string name="channel_name">Volume Control Channel</string>
-    <string name="channel_description">Channel for volume control notifications</string>
-    <string name="notification_title">Volume Control</string>
-    <string name="notification_text">Tap to open volume control</string>
     <string name="qs_label">(S) Volume (C)</string>
+    <string name="exit_button_text">Exit</string>
+    <string name="main_text">Please use the Quick Settings Tile or the Widget to control the volume panel.</string>
 </resources>

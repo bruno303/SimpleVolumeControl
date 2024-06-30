@@ -3,10 +3,10 @@ package com.bso.simplevolumecontrol
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
+
 
 class VolumeControlWidgetProvider : AppWidgetProvider() {
 
@@ -14,8 +14,9 @@ class VolumeControlWidgetProvider : AppWidgetProvider() {
         super.onUpdate(context, appWidgetManager, appWidgetIds)
 
         for (appWidgetId in appWidgetIds) {
-            val intent = Intent(context, MainActivity::class.java)
-            val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+            val intent = Intent(context, VolumeControlWidgetProvider::class.java)
+            intent.setAction("OPEN_VOLUME_PANEL")
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
             val views = RemoteViews(context.packageName, R.layout.widget)
             views.setOnClickPendingIntent(R.id.widget_icon, pendingIntent)
@@ -25,13 +26,9 @@ class VolumeControlWidgetProvider : AppWidgetProvider() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        super.onReceive(context, intent)
-        if (AppWidgetManager.ACTION_APPWIDGET_UPDATE == intent.action) {
-            val thisAppWidget = ComponentName(context.packageName, VolumeControlWidgetProvider::class.java.name)
-            val appWidgetManager = AppWidgetManager.getInstance(context)
-            val appWidgetIds = appWidgetManager.getAppWidgetIds(thisAppWidget)
-            onUpdate(context, appWidgetManager, appWidgetIds)
+        super.onReceive(context, intent);
+        if ("OPEN_VOLUME_PANEL" == intent.action) {
+            SimpleVolumeControl.openVolumePanel(context);
         }
     }
-
 }
