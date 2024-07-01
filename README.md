@@ -10,7 +10,5 @@ Hope you enjoy :)
 
 To open the system's volume panel you can:
 
-- click on the application icon
 - use a widget
-- use the persistent notification so you don't need to leave to home to change the volume
 - use the quick settings (you must add it to your quick settings bar)
