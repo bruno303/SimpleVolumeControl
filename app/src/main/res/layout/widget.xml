@@ -20,5 +20,6 @@
         android:layout_weight="1"
         android:text="@string/open_volume_control"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#FFFFFF"/>
 </LinearLayout>
